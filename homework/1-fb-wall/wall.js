@@ -2,16 +2,15 @@ $( document ).ready(function() {
     
     $("#post").click(function(){
         var inputvalue = $("#input").val();
-        $("#wall").prepend(inputvalue + "<button class ='like'>Like</button>" +"<br>" + "<br>");
+        $("#wall").prepend('<p>'+ inputvalue + '<button class ="like">Like</button><br><br></p>');
+        $("p").hide(5000);
         
+        
+        $(".like").click(function()
+        {
+             $(this).text("I like this");
+        });
+ 
     });
     
-     $(".like").click(function()
-    {
-      $(this).text("I like this");
-    });
- 
-  
-  
-  
 });
