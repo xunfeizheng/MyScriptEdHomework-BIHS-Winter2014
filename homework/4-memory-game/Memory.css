@@ -10,6 +10,8 @@
     border-color:red;
     font-size: 40px;
     text-align: center;
+    height: 80px;
+    width: 80px;
     
     
 }
@@ -22,7 +24,27 @@ h2{
 
 #reset{
     position:fixed;
-    top:480px;
-    right:20px;
+    top:380px;
+    left:200px;
     font-size:15px;
+}
+#s{
+    position:fixed;
+    top:300px;
+    left:200px;
+    border-style:solid;
+    border-color:black;
+    width: 60px;
+    text-align: center;
+    font-weight: bold;
+}
+#alert{
+    border-style:solid;
+    border-color:black;
+    text-align: center;
+    height: 40px;
+    width: 400px;
+    margin-left: auto ;
+    margin-right: auto ;
+    font-size: 30px;
 }
