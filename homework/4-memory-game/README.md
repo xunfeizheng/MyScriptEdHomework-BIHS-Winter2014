@@ -68,7 +68,7 @@ This homework is due on **03/27 by midnight**. One submission per group.
 
 Before submitting your homework, you must perform the following:
 
-1. Make sure all your files are in the "3-memory-game" folder.
+1. Make sure all your files are in the "4-memory-game" folder.
 2. Run in the terminal: 
   <br/>
   ``git add *``
