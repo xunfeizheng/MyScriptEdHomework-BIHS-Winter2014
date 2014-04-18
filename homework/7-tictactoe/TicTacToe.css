@@ -1,0 +1,27 @@
+#table{
+    border: 5px solid blue;
+    width : 400px;
+    height: 400px;
+    
+}
+
+.td{
+    border-style:solid;
+    border-color:red;
+    font-size: 40px;
+    text-align: center;
+    height: 80px;
+    width: 80px;
+}
+
+#title{
+    font-size: 50px;
+    color:green;
+}
+
+#reset{
+    position:fixed;
+    top:600px;
+    left:920px;
+    font-size:25px;
+}

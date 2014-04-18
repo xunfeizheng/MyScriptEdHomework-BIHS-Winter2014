@@ -5,52 +5,48 @@ $( document ).ready(function() {
     var firstclick = "0";
     var firstid = "0";
     $(".td").click(function(){
-        var boxes = $(this).attr("id");
-        if(flipped[boxes] === true){}
-        else{
-         
-        $(this).html(pictures[boxes]);
-       // alert("you click " + boxes );
-        flipped[boxes] = true;
-        clicks = clicks +1;
-        if(clicks == 1){
-            firstclick = $(this).children();
-            firstid = boxes;
-        }
-        else if(clicks == 2){
-            var secondclick = $(this).children();
-            var secondid = boxes;
-            if(firstclick.attr("src") == secondclick.attr("src")){
-                Match = true;
-                Score();
-                match();
+        var boxId = $(this).attr("id");
+        if(flipped[boxId] === false){
+            $(this).html(pictures[boxId]);
+            flipped[boxId] = true;
+            clicks = clicks +1;
+            if(clicks == 1){
+                firstclick = $(this).children();
+                firstid = boxId;
             }
-            else{
-                Match = false;
-                match();
-                setTimeout(function (){
-                $("#" + firstid).text('?');
-                flipped[firstid] = false;
-                $("#" + secondid).text('?');
-                flipped[secondid] = false;
-                Score();
-                }, 500);
-            }
-            clicks = 0;
-            flip();
+            else if(clicks == 2){
+                var secondclick = $(this).children();
+                var secondid = boxId;
+                if(firstclick.attr("src") == secondclick.attr("src")){
+                    Match = true;
+                    Score();
+                    match();
+                }
+                else{
+                    Match = false;
+                    match();
+                    setTimeout(function (){
+                        $("#" + firstid).text('?');
+                        flipped[firstid] = false;
+                        $("#" + secondid).text('?');
+                        flipped[secondid] = false;
+                        Score();
+                    }, 500);
+                }
+                clicks = 0;
+                CheckGameOver();
             }
         }
     });
     
     $("#reset").click(function(){
-        alert("Reset clicked!");
         $(".td").text('?');
         $("#score").text('0');
-        $("#alert").text(" ");
+        $("#alert").text(" Reset is clicked! ");
         for(var i=0; i<16; i++){
             flipped[i] = false;
         }
-        
+        HighScore();
         randompics(pictures);   
     });
     
@@ -76,14 +72,14 @@ $( document ).ready(function() {
         flipped[i] = false;
     }
     
-    function flip(){
+    function CheckGameOver(){
         var flipover = 0; 
         for(var x=0; x<16; x++){ 
-        if(flipped[x] === true){ 
-            flipover = flipover + 1; 
+            if(flipped[x] === true){ 
+                flipover = flipover + 1; 
             }     
-        if(flipover == 16){
-            alert("Congratulation! You finish the game."); 
+            if(flipover == 16){
+                $("#alert").text("Congrats, you score is " + $("#score").text());
             }
         } 
     }
@@ -100,6 +96,15 @@ $( document ).ready(function() {
           }
         }
         $("#score").text(score);
+    }
+    
+    function HighScore(){
+        var score =  parseInt($("#score").text());
+        var Highscore = parseInt($("#HighScore").text());
+        if (Highscore < score){
+            $("#HighScore").text(score);
+        }
+        
     }
     
     function match(){
