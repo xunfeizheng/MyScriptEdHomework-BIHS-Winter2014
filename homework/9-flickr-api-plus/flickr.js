@@ -22,13 +22,18 @@ $(document).ready(function() {
 
 	function processPictures(data) {
 		
-		$("#result-header").text("Photos:")
-
-		var firstPhoto = data.photos.photo[0];
-		// http://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
-		var imageUrl = "https://farm8.staticflickr.com/7356/14162121513_dd630921d9.jpg";
-		var imageHtmlElement = "<img src='" + imageUrl + "' />";
-
-		$("#result-photos").append(imageHtmlElement);
+		$("#result-header").text("Photos:");
+		var ThePhoto = data.photos.photo;
+        for(var i=0; 1 < ThePhoto.length; i++){
+            var FarmId = ThePhoto[i].farm;
+            var ServerId = ThePhoto[i].server;
+            var Id =ThePhoto[i].id;
+            var Secret = ThePhoto[i].secret; 
+            // http://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
+            var imageUrl = "https://farm" + FarmId + ".staticflickr.com/" + ServerId + "/" + Id + "_" + Secret + ".jpg";
+            var imageHtmlElement = "<img class=\"image\" src='" + imageUrl + "' /> <br/>";
+            var PicTitle = ThePhoto[i].title;
+            $("#result-photos").append(PicTitle + "<br/>" + imageHtmlElement);
+        }
 	}
 });

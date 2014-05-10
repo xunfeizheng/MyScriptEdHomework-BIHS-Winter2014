@@ -9,7 +9,8 @@ $( document ).ready(function() {
                 var ServerId = item.server;
                 var Id = item.id;
                 var Secret = item.secret; 
-                $("#PictureBox").html("<img src=\"http://farm"+FarmId+".staticflickr.com/"+ServerId+"/"+Id+"_"+Secret+".jpg height=\"80px\" width=\"80px\">");
+                var image = "<img src=\"http://farm"+FarmId+".staticflickr.com/"+ServerId+"/"+Id+"_"+Secret+".jpg height=\"80px\" width=\"80px\">";
+                $("#PictureBox").append(image);
              });
              
              
